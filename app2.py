@@ -73,23 +73,25 @@ def main():
 
 
 def getpath():
+    user_folder = 'Profile 1'  # Default or Profile 1 or Profile 2
     if os.name == "nt":
         # This is the Windows Path
         PathName = os.getenv('localappdata') + \
-            '\\Google\\Chrome\\User Data\\Default\\'
+            '\\Google\\Chrome\\User Data\\' + user_folder + '\\'
         if (os.path.isdir(PathName) == False):
             print('[!] Chrome Doesn\'t exists')
             sys.exit(0)
     elif ((os.name == "posix") and (sys.platform == "darwin")):
         # This is the OS X Path
         PathName = os.getenv(
-            'HOME') + "/Library/Application Support/Google/Chrome/Default/"
+            'HOME') + "/Library/Application Support/Google/Chrome/" + user_folder + '/'
         if (os.path.isdir(PathName) == False):
             print('[!] Chrome Doesn\'t exists')
             sys.exit(0)
     elif (os.name == "posix"):
         # This is the Linux Path
-        PathName = os.getenv('HOME') + '/.config/google-chrome/Default/'
+        PathName = os.getenv('HOME') + \
+            '/.config/google-chrome/' + user_folder + '/'
         if (os.path.isdir(PathName) == False):
             print('[!] Chrome Doesn\'t exists')
             sys.exit(0)
@@ -106,5 +108,6 @@ def csv(info):
     print("Data written to chromepass.csv")
 
 
-if __name__ == '__main__':
-    args_parser()
+# if __name__ == '__main__':
+#     args_parser()
+csv(main())

